@@ -131,6 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
             minute: '2-digit'
         });
 
+        // Google Mapボタンのクリックイベント
+        document.getElementById('openMapBtn').addEventListener('click', function() {
+            const area = document.getElementById('area').value;
+            const address = document.getElementById('address').value;
+            const query = ${area} ${address};
+            const url = https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)};
+            window.open(url, '_blank');
+        }
+        
         // Google Mapsリンクから緯度・経度を抽出
         const regex = /@([-.\d]+),([-.\d]+)/;
         const match = mapLink.match(regex);
