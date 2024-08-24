@@ -76,10 +76,14 @@ document.addEventListener("DOMContentLoaded", function () {
 　　document.getElementById('openMapBtn').addEventListener('click', function() {
     　const area = document.getElementById('area').value;
     　const address = document.getElementById('address').value;
+      // 発生場所と住所（つづき）を結合してクエリを作成
+      const query = `${area} ${address}`;
+      // Google Mapsの検索リンクを作成
     　const query = `${area} ${address}`;
     　const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
     　window.open(url, '_blank');
 　　});
+
 
     
     // Google Mapsの初期化
