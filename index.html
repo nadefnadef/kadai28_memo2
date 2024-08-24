@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Emergency Reporting Tool</title>
+    <link rel="stylesheet" href="css/sample.css">
+</head>
+<body>
+    <header>
+        災害情報集約アプリ
+    </header>
+
+    <main>
+        <div class="button-container">
+            <button class="toggle-form-button">新規被害について投稿する</button>
+        </div>
+        
+        <div class="table-container">
+            <table id="postsTable">
+                <thead>
+                    <tr>
+                        <th>日時</th>
+                        <th>名前（カタカナ）</th>
+                        <th>名前（漢字）</th>
+                        <th>所属機関</th>
+                        <th>事態種別</th>
+                        <th>発生場所</th>
+                        <th>住所（つづき）</th>
+                        <th>マップリンク</th>
+                        <th>写真</th>
+                        <th>詳細（100字以内）</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 投稿内容がここに追加される -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="form-container">
+            <form id="emergencyForm">
+                <label class="required">名前（カタカナ）</label>
+                <input type="text" id="katakanaName" required>
+
+                <label class="required">名前（漢字）</label>
+                <input type="text" id="kanjiName" required>
+
+                <label class="required">所属機関</label>
+                <input type="text" id="organization" required>
+
+                <label class="required">所属部署名</label>
+                <input type="text" id="department" required>
+
+                <label class="required">役職名</label>
+                <input type="text" id="position" required>
+
+                <label class="required">連絡先電話番号</label>
+                <input type="tel" id="phone" required>
+
+                <label class="required">メールアドレス</label>
+                <input type="email" id="email" required>
+
+                <label class="required">事態発生場所近隣目印</label>
+                <input type="text" id="landmark" required>
+
+                <label class="required">事態種別</label>
+                <select id="incidentType" required>
+                    <option value="">選択してください</option>
+                    <option value="要救助者あり">要救助者あり</option>
+                    <option value="家屋被害">家屋被害</option>
+                    <option value="インフラ被害">インフラ被害</option>
+                    <option value="その他">その他</option>
+                </select>
+
+                <div id="rescueDetails" style="display: none;">
+                    <label id="peopleLabel" class="required">人数</label>
+                    <input type="number" id="peopleCount">
+                    <input type="checkbox" id="unknownPeople"> 人数不明・複数人
+                </div>
+
+                <label class="required">発生場所</label>
+                <select id="area" required>
+                    <option value="">選択してください</option>
+                    <option value="相玉">下田市相玉</option>
+                    <option value="朝日町">下田市朝日町</option>
+                    <option value="一丁目">下田市一丁目</option>
+                    <option value="大賀茂">下田市大賀茂</option>
+                    <option value="河内">下田市河内</option>
+                    <option value="敷根">下田市敷根</option>
+                    <option value="須崎">下田市須崎</option>
+                    <option value="高根">下田市高根</option>
+                    <option value="立野">下田市立野</option>
+                    <option value="田牛">下田市田牛</option>
+                    <option value="西中">下田市西中</option>
+                    <option value="東本郷">下田市東本郷</option>
+                    <option value="蓮台寺">下田市蓮台寺</option>
+                    <option value="外ヶ岡">下田市外ヶ岡</option>
+                    <option value="六丁目">下田市六丁目</option>
+                </select>
+
+                <label>住所（つづき）</label>
+                <input type="text" id="address">
+
+                <label>Google Mapリンク</label>
+                <input type="url" id="mapLink" placeholder="google map地図上で詳細場所リンクをコピーしてください">
+
+                <div class="map-container">
+                    <button type="button" id="openMapBtn">Google Mapで場所を選択</button>
+                </div>
+
+                <label class="required">現場写真</label>
+                <input type="file" id="photo" accept="image/*" required>
+
+                <label>詳細（100字以内）</label>
+                <textarea id="memo" maxlength="100"></textarea>
+
+                <button type="submit" id="submitBtn" class="disabled" disabled>投稿</button>
+                <button type="button" id="clearBtn">消去</button>
+            </form>
+        </div>
+
+        <!-- Google Mapsの表示モーダル -->
+        <div id="mapModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="map"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script src="localstorage/js/jquery-2.1.3.min.js"></script>
+    <script src="js/sample.js"></script>
+</body>
+</html>
