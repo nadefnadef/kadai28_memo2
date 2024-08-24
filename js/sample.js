@@ -129,11 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const katakanaName = document.getElementById("katakanaName").value;
         const kanjiName = document.getElementById("kanjiName").value;
         const organization = document.getElementById("organization").value;
-        const department = document.getElementById("department").value;
-        const position = document.getElementById("position").value;
-        const phone = document.getElementById("phone").value;
-        const email = document.getElementById("email").value;
-        const landmark = document.getElementById("landmark").value;
         const incidentTypeValue = incidentType.value;
         const area = document.getElementById("area").value;
         const address = document.getElementById("address").value || "なし";
