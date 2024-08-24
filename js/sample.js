@@ -72,6 +72,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+　　// Google Mapボタンのクリックイベント
+　　document.getElementById('openMapBtn').addEventListener('click', function() {
+    　const area = document.getElementById('area').value;
+    　const address = document.getElementById('address').value;
+    　const query = `${area} ${address}`;
+    　const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+    　window.open(url, '_blank');
+　　});
+
+    
     // Google Mapsの初期化
     function initMap() {
         const mapOptions = {
