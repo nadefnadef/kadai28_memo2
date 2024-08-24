@@ -83,8 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     　const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
     　window.open(url, '_blank');
 　　});
-
-
     
     // Google Mapsの初期化
     function initMap() {
@@ -144,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
             hour: '2-digit',
             minute: '2-digit'
         });
-        
+
         // Google Mapsリンクから緯度・経度を抽出
         const regex = /@([-.\d]+),([-.\d]+)/;
         const match = mapLink.match(regex);
